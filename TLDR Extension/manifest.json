@@ -13,11 +13,14 @@
     "permissions":[
         "contextMenus", 
         "activeTab", 
-        "scripting"
+        "scripting",
+        "storage",
+        "http://*/*", 
+        "https://*/*"
     ],
     "host_permissions": ["<all_urls>"],
     "background": {
-        "service_worker": "background.js"
+        "service_worker": "dist/background.bundle.js"
     },
     "icons":{
         "16": "assets/icon16.png",
