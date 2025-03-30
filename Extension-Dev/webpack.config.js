@@ -2,9 +2,12 @@ const path = require("path");
 
 module.exports = {
   mode: "production", // "development" for debugging
-  entry: "./TLDR Extension/background.js", // <-- Fix the path here
+  entry: {
+    background: "./TLDR Extension/background.js",
+    popup: "./TLDR Extension/popup/popup.js"
+  },
   output: {
-    filename: "background.bundle.js",
+    filename: "[name].bundle.js", // [name] will be replaced with "background" and "popup"
     path: path.resolve(__dirname, "TLDR Extension/dist"), // Output to "TLDR Extension/dist"
   },
   resolve: {
@@ -12,5 +15,6 @@ module.exports = {
       "fs": false, // Disable unsupported Node.js modules
       "path": false
     }
-  }
+  },
+  mode: "production"
 };

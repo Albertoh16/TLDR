@@ -41,7 +41,6 @@ chrome.contextMenus.onClicked.addListener(async (info, tab) => {
 
                 // Store the summary & notify user
                 chrome.storage.local.set({ aiDigestResult: summary });
-                chrome.action.openPopup();
             }
 
         } catch (error) {
