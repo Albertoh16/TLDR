@@ -24,26 +24,25 @@ chrome.contextMenus.onClicked.addListener(async (info, tab) => {
             const extractedText = extractTextFromHTML(html);
             console.log("Extracted text:", extractedText);
 
-            // if (extractedText) {
-            //     // Send extracted text to AI
-            //     const aiResponse = await fetch("http://localhost:11434/api/generate", {
-            //         method: "POST",
-            //         headers: { "Content-Type": "application/json" },
-            //         body: JSON.stringify({
-            //             model: "mistral",
-            //             prompt: `Summarize the following article:\n\n${extractedText}`,
-            //             stream: false
-            //         })
-            //     });
+            if (extractedText) {
+                // Send extracted text to AI
+                const aiResponse = await fetch("http://localhost:5000/generate", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        prompt: extractedText
+                    })
+                });
+                console.log("Recieved AI Response", aiResponse)
+                const data = await aiResponse.json();
+                const summary = data.response;
+                console.log("AI Summary:", summary);
 
-            //     const data = await aiResponse.json();
-            //     const summary = data.response;
-            //     console.log("AI Summary:", summary);
+                // Store the summary & notify user
+                chrome.storage.local.set({ aiDigestResult: summary });
+                chrome.action.openPopup();
+            }
 
-            //     // Store the summary & notify user
-            //     chrome.storage.local.set({ aiDigestResult: summary });
-            //     chrome.action.openPopup();
-            // }
         } catch (error) {
             console.error("Error summarizing link:", error);
             if (error.response) {
