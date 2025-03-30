@@ -22,9 +22,10 @@ chrome.contextMenus.onClicked.addListener(async (info, tab) => {
 
             // Extract meaningful content from the HTML
             const extractedText = extractTextFromHTML(html);
-            console.log("Extracted text:", extractedText);
 
             if (extractedText) {
+                console.log("Sending extracted text to API:", extractedText);
+
                 // Send extracted text to AI
                 const aiResponse = await fetch("http://localhost:5000/generate", {
                     method: "POST",
@@ -58,7 +59,10 @@ chrome.contextMenus.onClicked.addListener(async (info, tab) => {
 // Function to extract readable text from raw HTML
 function extractTextFromHTML(html) {
     const $ = cheerio.load(html);
-    
-    // Extract all text from the body tag
-    return $("body").text().trim();
+
+    // Remove unwanted elements before extracting text
+    $("script, style, noscript, iframe, svg, nav, footer, header, aside").remove();
+
+    // Extract and return cleaned text
+    return $("body").text().replace(/\s+/g, ' ').trim();
 }
