@@ -20,6 +20,11 @@ def chunk_text(text, max_chars=3000):
     chunks.append(text)  # Add remaining text
     return chunks
 
+@app.route("/", methods=["GET"])
+def health_check():
+    return jsonify({"message": "Server is running!"}), 200
+
+
 @app.route("/generate", methods=["POST"])
 def generate():
     data = request.json
