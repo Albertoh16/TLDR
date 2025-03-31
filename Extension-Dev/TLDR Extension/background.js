@@ -1,6 +1,7 @@
 // import cheerio from "cheerio"; // Works after Webpack bundles it
 import * as cheerio from "cheerio";
 
+//epic
 chrome.runtime.onInstalled.addListener(() => 
 {
     chrome.contextMenus.create(
@@ -12,9 +13,11 @@ chrome.runtime.onInstalled.addListener(() =>
 });
 
 
+
 chrome.contextMenus.onClicked.addListener(async (info, tab) => {
     if (info.menuItemId === "SummarizeLink" && info.linkUrl) {
         console.log("Fetching content from:", info.linkUrl);
+        }
         try {
             // Fetch webpage content
             const response = await fetch(info.linkUrl, { mode: "no-cors" });
