@@ -17,7 +17,7 @@ chrome.contextMenus.onClicked.addListener(async (info, tab) => {
         console.log("Fetching content from:", info.linkUrl);
         try {
             // Fetch webpage content
-            const response = await fetch(info.linkUrl);
+            const response = await fetch(info.linkUrl, { mode: "no-cors" });
             const html = await response.text();
 
             // Extract meaningful content from the HTML
