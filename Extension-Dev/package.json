@@ -11,7 +11,9 @@
   "license": "ISC",
   "dependencies": {
     "cheerio": "^1.0.0",
-    "webpack": "^5.98.0",
+    "webpack": "^5.98.0"
+  },
+  "devDependencies": {
     "webpack-cli": "^6.0.1"
   }
 }

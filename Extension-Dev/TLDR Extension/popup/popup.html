@@ -6,7 +6,8 @@
     <title>TLDR</title>
     <link rel="stylesheet" href="bulma.min.css">
     <style>
-        canvas {
+        canvas 
+        {
             border: 2px solid #333;
             display: block;
             margin-top: 20px;
@@ -17,7 +18,8 @@
 
     <div class="container">
         <h1 align="center" class="title has-text-centered pt-4">TLDR</h1>
-        <div id="result" class="box">Loading...</div>
+        <progress id="loadIcon" class="progress is-small is-primary" max="100">15%</progress>
+        <div id="result" class="box">Summarizing...</div>
     </div>
 
     <script src="../dist/popup.bundle.js"></script>
