@@ -1,1 +1,1 @@
-document.addEventListener("DOMContentLoaded",(function(){chrome.action.openPopup();const e=document.getElementById("result");chrome.storage.local.get("aiDigestResult",(function(t){t.aiDigestResult?e.innerText=t.aiDigestResult:e.innerText="No summary available."}))}));
+document.addEventListener("DOMContentLoaded",(function(){const e=document.getElementById("result");chrome.storage.local.get("aiDigestResult",(function(t){t.aiDigestResult?e.innerText=t.aiDigestResult:e.innerText="No summary available."}))}));
