@@ -25,10 +25,7 @@ chrome.contextMenus.onClicked.addListener(async (info, tab) =>
     }
 
     try 
-    {
-        // Clears previously cached cookie.
-        chrome.storage.local.clear();
-    
+    {    
         // Fetch webpage content
         const response = await fetch(info.linkUrl, { mode: "no-cors" });
 
@@ -60,8 +57,7 @@ chrome.contextMenus.onClicked.addListener(async (info, tab) =>
 
             console.log("AI Summary:", summary);
 
-            // Store the summary & notify user.
-            chrome.storage.local.set({ aiDigestResult: summary }); 
+            chrome.runtime.sendMessage({ action: summary }, (response) => {});
         }
     } 
 

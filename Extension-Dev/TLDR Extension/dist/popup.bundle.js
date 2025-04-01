@@ -1,1 +1,1 @@
-document.addEventListener("DOMContentLoaded",(function(){const e=document.getElementById("result");chrome.storage.local.get("aiDigestResult",(function(t){t.aiDigestResult?e.innerText=t.aiDigestResult:e.innerText="No summary available."}))}));
+chrome.runtime.onMessage.addListener(((e,n,t)=>{var s;s=e.action,document.getElementById("loadIcon").style.display="none",document.getElementById("result").innerText=s,t({success:!0})}));
