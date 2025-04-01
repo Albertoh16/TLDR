@@ -53,12 +53,14 @@ chrome.contextMenus.onClicked.addListener(async (info, tab) =>
 
             // Fetches AI summerization.
             const data = await aiResponse.json();
-            const summary = data.response;
+            const summary = await data.response;
 
             console.log("AI Summary:", summary);
 
             // Sends a message to all event listeners.
-            chrome.runtime.sendMessage({ action: summary }, (response) => {});
+            chrome.runtime.sendMessage({ action: summary }, (response) => {
+                console.log("Response from background:", response);
+            });
         }
     } 
 
