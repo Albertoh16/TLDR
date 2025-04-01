@@ -1,7 +1,7 @@
 // import cheerio from "cheerio"; // Works after Webpack bundles it
 import * as cheerio from "cheerio";
 
-//epic
+// Listens for context menu press.
 chrome.runtime.onInstalled.addListener(() => 
 {
     chrome.contextMenus.create(
@@ -26,9 +26,8 @@ chrome.contextMenus.onClicked.addListener(async (info, tab) =>
 
     try 
     {    
-        // Fetch webpage content
+        // Fetch webpage content.
         const response = await fetch(info.linkUrl, { mode: "no-cors" });
-
         const html = await response.text();
 
         // Extract meaningful content from the HTML
@@ -39,7 +38,7 @@ chrome.contextMenus.onClicked.addListener(async (info, tab) =>
 
             console.log("Sending extracted text to API:", extractedText);
 
-            // Send extracted text to AI
+            // Send extracted text to AI.
             const aiResponse = await fetch("http://localhost:5000/generate", 
             {
                 method: "POST",
@@ -52,11 +51,13 @@ chrome.contextMenus.onClicked.addListener(async (info, tab) =>
 
             console.log("Recieved AI Response", aiResponse);
 
+            // Fetches AI summerization.
             const data = await aiResponse.json();
             const summary = data.response;
 
             console.log("AI Summary:", summary);
 
+            // Sends a message to all event listeners.
             chrome.runtime.sendMessage({ action: summary }, (response) => {});
         }
     } 
