@@ -1,3 +1,10 @@
+# Purpose
+We were frustrated with the rise of clickbait articles that waste time with fluff and misleading titles. How many times have we clicked on an article only to find it doesn't provide useful information? We wanted a tool that quickly summarizes content, helping users decide if an article is worth reading. That's how TLDR was born.
+
+# Demo
+[![Watch the video](https://img.youtube.com/vi/TOm1njeXCEo/hqdefault.jpg)](https://www.youtube.com/embed/TOm1njeXCEo)
+
+
 # AI Article Summarizer
 
 This project consists of a **Flask-based AI server** that summarizes articles and a **Chrome extension** that fetches and sends article content to the server for summarization.
